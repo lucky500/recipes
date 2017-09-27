@@ -24,3 +24,17 @@ post("/add_recipe") do
     erb(:errors)
   end
 end
+
+get('/recipes/:id') do
+  @recipe = Recipe.find(params[:id])
+  @ingredients = @recipe.ingredients
+  erb(:recipe)
+end
+
+patch('/add_ingredients') do
+  @recipe = Recipe.find(params["id"].to_i)
+  ingredient = params.fetch("ingredient")
+  @recipe.ingredients.push(ingredient)
+  @recipe.save
+  redirect '/recipes/' + @recipe.id.to_s
+end

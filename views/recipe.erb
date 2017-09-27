@@ -1,0 +1,45 @@
+<h2> <%= @recipe.name %> </h2>
+<ul>
+  <% @ingredients.each do |ingredient| %>
+  <li> <%= ingredient %> </li>
+  <% end %>
+</ul>
+
+<div class="row">
+  <div class="col-md-4">
+    <form action="/add_ingredients" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <input type="hidden" name="id" value="<%= @recipe.id %>">
+      <h3>Add an ingredient here!</h3>
+      <label for="ingredient">Ingredient:</label>
+      <input type="text" name="ingredient" class="form-control">
+      <button type="submit" name="button">Add Ingredient</button>
+    </form>
+  </div>
+
+  <div class="col-md-4">
+    <form action="/add_instructions" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <h3>Add the recipe instructions!</h3>
+      <label for="instructions">Instructions:</label>
+      <input type="text" name="instructions" class="form-control">
+      <button type="submit" name="button">Add Instructions</button>
+    </form>
+  </div>
+
+  <div class="col-md-4">
+    <form action="/add_rating" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <h3>Give this recipe a rating out of 5!</h3>
+      <label for="rating">Rating:</label>
+      <select class="form-control" name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <button type="submit" name="button">Submit Rating</button>
+    </form>
+  </div>
+</div>
