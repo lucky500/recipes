@@ -7,7 +7,7 @@ require("./lib/tag")
 require("pry")
 
 get("/") do
-  @recipes = Recipe.all
+  @recipes = Recipe.order('rating DESC').all
   erb(:index)
 end
 
@@ -70,6 +70,6 @@ end
 delete('/recipes/:id') do
   @recipe = Recipe.find(params[:id])
   @recipe.destroy
-  @recipes = Recipe.all
+  @recipes = Recipe.order('rating DESC').all
   erb(:index)
 end
