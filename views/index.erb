@@ -13,3 +13,11 @@
 <% else %>
   <p>There are currently no recipes!</p>
 <% end %>
+
+
+<h3>Search for recipes by ingredients:</h3>
+<form action="/recipes_by_ingredient" method="patch">
+  <label for="ingredient">Ingredient:</label>
+  <input type="text" name="ingredient" class="form_control">
+  <button type="submit" name="button" class="btn">Find</button>
+</form>

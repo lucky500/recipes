@@ -73,3 +73,14 @@ delete('/recipes/:id') do
   @recipes = Recipe.order('rating DESC').all
   erb(:index)
 end
+
+get('/recipes_by_ingredient') do
+  ingredient = params.fetch("ingredient")
+  redirect '/ingredients/' + ingredient
+end
+
+get('/ingredients/:ingredient') do
+  @ingredient = params.fetch(:ingredient)
+  @recipes = Recipe.all
+  erb(:ingredient)
+end
