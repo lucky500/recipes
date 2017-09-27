@@ -61,3 +61,8 @@ patch('/add_tag') do
   @recipe.save
   redirect '/recipes/' + @recipe.id.to_s
 end
+
+get('/tags/:id') do
+  @tag = Tag.find(params[:id])
+  erb(:tag)
+end
