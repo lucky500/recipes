@@ -45,3 +45,10 @@ patch('/add_instructions') do
   @recipe.update({:instructions => instructions})
   redirect '/recipes/' + @recipe.id.to_s
 end
+
+patch('/add_rating') do
+  @recipe = Recipe.find(params["id"].to_i)
+  rating = params.fetch("rating").to_i
+  @recipe.update({:rating => rating})
+  redirect '/recipes/' + @recipe.id.to_s
+end
