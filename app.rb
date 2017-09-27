@@ -52,3 +52,12 @@ patch('/add_rating') do
   @recipe.update({:rating => rating})
   redirect '/recipes/' + @recipe.id.to_s
 end
+
+patch('/add_tag') do
+  @recipe = Recipe.find(params["id"].to_i)
+  name = params.fetch("tag")
+  tag = Tag.create({:name => name})
+  @recipe.tags.push(tag)
+  @recipe.save
+  redirect '/recipes/' + @recipe.id.to_s
+end
