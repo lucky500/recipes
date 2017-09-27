@@ -73,3 +73,8 @@
 <a href="/">
   <button type="button" class="btn">Home</button>
 </a>
+
+<form action="/recipes/<%= @recipe.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit" class="btn btn-danger">Delete Recipe</button>
+</form>

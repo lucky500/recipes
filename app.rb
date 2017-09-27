@@ -66,3 +66,10 @@ get('/tags/:id') do
   @tag = Tag.find(params[:id])
   erb(:tag)
 end
+
+delete('/recipes/:id') do
+  @recipe = Recipe.find(params[:id])
+  @recipe.destroy
+  @recipes = Recipe.all
+  erb(:index)
+end
