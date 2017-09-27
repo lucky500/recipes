@@ -16,6 +16,11 @@ get("/recipe_form") do
 end
 
 post("/add_recipe") do
-  Recipe.create({:name => params['name'] })
-  redirect '/'
+  recipe = Recipe.new({:name => params['name'] })
+  if recipe.save
+    redirect '/'
+  else
+    @error_type = recipe
+    erb(:errors)
+  end
 end
